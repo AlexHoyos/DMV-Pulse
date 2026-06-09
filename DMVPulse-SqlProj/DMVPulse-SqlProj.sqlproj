@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="2.2.0" />
+  <PropertyGroup>
+    <Name>DMVPulse_SqlProj</Name>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql170DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <ProjectGuid>896507B2-A487-4914-A2CB-4121D88B8FD2</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="dmvpulse.publish.xml" />
+  </ItemGroup>
+</Project>
