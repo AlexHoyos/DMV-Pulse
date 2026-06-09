@@ -2,3 +2,4 @@
 *.dacpac
 **/obj/
 **/bin/
+DMVPulse-SqlProj/dmvpulse-publish.xml
