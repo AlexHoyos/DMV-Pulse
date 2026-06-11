@@ -28,11 +28,7 @@
         "allow-credentials": false
       },
       "authentication": {
-        "provider": "AzureAD",
-        "jwt": {
-          "audience": "@env('AD_CLIENT_ID')",
-          "issuer": "https://microsoftonline.com"
-        }
+        "provider": "StaticWebApps"
       },
       "mode": "development"
     },
