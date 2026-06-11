@@ -47,5 +47,206 @@
   },
   "autoentities": {},
   "entities": {
+    "CheckBlockingQueries": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_CheckBlockingQueries"
+      },
+      "description": "Check for blocking sessions/queries that have been waiting for more than 30 seconds.",
+      "fields": [
+        {
+          "name": "SessionID",
+          "description": "The ID of the session that is blocked."
+        },
+        {
+          "name": "BlockingSessionID",
+          "description": "The ID of the session that is causing the block."
+        },
+        {
+          "name": "WaitTimeSeconds",
+          "description": "The amount of time in seconds the session has been waiting."
+        },
+        {
+          "name": "QueryText",
+          "description": "The text of the query being executed by the blocked session."
+        },
+        {
+          "name": "BlockingQueryText",
+          "description": "The text of the query being executed by the blocking session."
+        },
+        {
+          "name": "BlockingCause",
+          "description": "The cause of the block: 'Script' (active request), 'Transaction' (idle transaction), or 'Idle Session'."
+        }
+      ],
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/check-blocking-queries",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "CheckLockDetails": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_CheckLockDetails"
+      },
+      "description": "Check lock details on database objects.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/check-lock-details",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "GetSessionResourceUsage": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_GetSessionResourceUsage"
+      },
+      "description": "Retrieve real-time resource consumption per session.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/get-session-resource-usage",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "GetTopResourceQueries": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_GetTopResourceQueries"
+      },
+      "description": "Extract the top resource-consuming queries from the plan cache.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/get-top-resource-queries",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "GetMissingIndexes": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_GetMissingIndexes"
+      },
+      "description": "Retrieve database recommended missing indexes with pre-generated script statements.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/get-missing-indexes",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "GetQueryExecutionPlan": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_GetQueryExecutionPlan"
+      },
+      "description": "Retrieve the XML execution plan for a specific plan handle.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/get-query-execution-plan",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    },
+    "GetPlansForQuery": {
+      "source": {
+        "type": "stored-procedure",
+        "object": "dmvpulse.usp_GetPlansForQuery"
+      },
+      "description": "Retrieve different execution plans and performance metrics for a specific query hash or matching query text.",
+      "permissions": [
+        {
+          "role": "anonymous",
+          "actions": [
+            "execute"
+          ]
+        }
+      ],
+      "rest": {
+        "path": "/get-plans-for-query",
+        "methods": [
+          "get",
+          "post"
+        ]
+      },
+      "mcp": {
+        "custom-tool": true
+      }
+    }
   }
 }
