@@ -28,7 +28,11 @@
         "allow-credentials": false
       },
       "authentication": {
-        "provider": "StaticWebApps"
+        "provider": "AzureAD",
+        "jwt": {
+          "audience": "@env('AD_CLIENT_ID')",
+          "issuer": "https://microsoftonline.com"
+        }
       },
       "mode": "development"
     },
@@ -147,7 +151,17 @@
     "GetTopResourceQueries": {
       "source": {
         "type": "stored-procedure",
-        "object": "dmvpulse.usp_GetTopResourceQueries"
+        "object": "dmvpulse.usp_GetTopResourceQueries",
+        "parameters": [
+          {
+            "name": "Metric",
+            "default": "CPU"
+          },
+          {
+            "name": "TopCount",
+            "default": 10
+          }
+        ]
       },
       "description": "Extract the top resource-consuming queries from the plan cache.",
       "permissions": [
@@ -197,7 +211,13 @@
     "GetQueryExecutionPlan": {
       "source": {
         "type": "stored-procedure",
-        "object": "dmvpulse.usp_GetQueryExecutionPlan"
+        "object": "dmvpulse.usp_GetQueryExecutionPlan",
+        "parameters": [
+          {
+            "name": "PlanHandleStr",
+            "description": "The plan handle value to retrieve the execution plan."
+          }
+        ]
       },
       "description": "Retrieve the XML execution plan for a specific plan handle.",
       "permissions": [
@@ -222,7 +242,17 @@
     "GetPlansForQuery": {
       "source": {
         "type": "stored-procedure",
-        "object": "dmvpulse.usp_GetPlansForQuery"
+        "object": "dmvpulse.usp_GetPlansForQuery",
+        "parameters": [
+          {
+            "name": "QueryHashStr",
+            "description": "The query hash value to filter execution plans."
+          },
+          {
+            "name": "SearchText",
+            "description": "The query text to filter execution plans (optional, supports partial match)."
+          }
+        ]
       },
       "description": "Retrieve different execution plans and performance metrics for a specific query hash or matching query text.",
       "permissions": [
